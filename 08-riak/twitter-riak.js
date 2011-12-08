@@ -1,5 +1,5 @@
-var TwitterNode = require('twitter-node').TwitterNode;
-var riak = require('riak-js').getClient();
+var TwitterNode = require('./vendor/twitter-node').TwitterNode;
+var riak = require('./vendor/riak-js').getClient();
 var sys = require('sys');
 var twitter = new TwitterNode();
 twitter.user = process.env['TWITTER_USER'];

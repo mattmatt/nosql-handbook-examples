@@ -29,10 +29,10 @@ audit_trail(Object) ->
   end,
 
   Entry = case Deleted of
-    true -> [{struct, [{get_timestamp(),
+    false -> [{struct, [{get_timestamp(),
                mochijson2:decode(
                   riak_object:get_value(Object))}]}];
-    false -> [{struct, [{get_timestamp(), null}]}]
+    true -> [{struct, [{get_timestamp(), null}]}]
   end,
   UpdatedAudit = lists:append(AuditTrail, Entry),
   Json = list_to_binary(mochijson2:encode({struct, [{<<"trail">>, UpdatedAudit}]})),
